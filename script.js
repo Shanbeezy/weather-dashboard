@@ -14,14 +14,29 @@ var searchHistoryContainer = document.querySelector('#history');
 function getSearchHistory() {
     searchHistoryContainer.innerHTML = '';
 
-// Shows most recent search at top of history
-for (var x = searchHistory.length -1; x >= 0; x++) {
-    var btn = document.createElement('button');
-    btn.setAttribute('type', 'button');
-    btn.setAttribute('aria-controls', 'today weather');
-    btn.classList.add('history-btn', 'btn-history');
+    // Shows most recent search at top of history
+    for (var x = searchHistory.length -1; x >= 0; x++) {
+        var btn = document.createElement('button');
+        btn.setAttribute('type', 'button');
+        btn.setAttribute('aria-controls', 'today weather');
+        btn.classList.add('history-btn', 'btn-history');
 
-    //`data-search` allows city name acces when click handler is called
-    btn.setAttribute('data')
+        //`data-search` allows city name acces when click handler is called
+        btn.setAttribute('data-search', searchHistory[x]);
+        btn.textContent = searchHistory[x];
+        searchHistoryContainer.append(btn);
+    }
+
 }
+
+//Updates history in local storage then updates the displayed history.
+function  appendToHistory(search) {
+    //If there is no search history then upadte displaays history
+    if (searchHistory.indexOf(search) !== -1) {
+        return;
+    }
+    searchHistory.push(search);
+
+    localStorage.setItem('search-history', JSON.stringify(searchHistory));
+    getSearchHistory();
 }
