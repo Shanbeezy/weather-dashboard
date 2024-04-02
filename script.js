@@ -55,7 +55,7 @@ function localHistoryStorage() {
 
 //Function to show current weather data from OpenWeather api.
 function getCurrentWeather(city, weather) {
-    var date = dayjs().format('M/D/YYY');
+    var date = dayjs().format('M/D/YYYY');
     // Store response data from fetch reqests in variables
     var fTemp = weather.main.temp;
     var windSpeed = weather.wind.speed;
