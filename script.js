@@ -30,7 +30,6 @@ function getSearchHistory() {
         btn.textContent = searchHistory[x];
         searchHistoryContainer.append(btn);
     }
-
 }
 
 //Updates history in local storage then updates the displayed history.
@@ -120,7 +119,7 @@ function getWeatherCard (weather) {
     cardBody.append(cardTitle, weatherIcon, tempEl, windEl, humidityEl);
 
     col.setAttribute('class', 'col-md');
-    col.classList.add('five-day-card');dToHistory
+    col.classList.add('five-day-card');
     card.setAttribute('class', 'card bg-primary h-100 text-white');
     cardBody.setAttribute('class', 'card-body p-2');
     cardTitle.setAttribute('class', 'card-title');
@@ -156,6 +155,7 @@ function getForecast(dailyForecast) {
     forecastContainer.append(ColHeading);
 
     for(var x = 0; x < dailyForecast.length; x++) {
+
         // Starts by filtering through all of the data and returns only data that falls between one day after current data
         if (dailyForecast[x].Date >= startDate && dailyForecast[x].Date < endDate) {
 
@@ -192,6 +192,7 @@ function fetchWeather(location) {
         console.error(err);
       });
 }
+
 function fetchCoords(search) {
     var apiUrl = `${weatherApiRootUrl}/geo/1.0/direct?q=${search}&limit=5&appid=${weatherApiKey}`;
   
@@ -211,12 +212,13 @@ function fetchCoords(search) {
         console.error(err);
       });
 }
+
 function correctSearchFormSubmit(e) {
     // Don't continue if there is nothing in the search form
     if (!searchInput.value) {
       return;
     }
-  
+    
     e.preventDefault();
     var search = searchInput.value.trim();
     fetchCoords(search);
