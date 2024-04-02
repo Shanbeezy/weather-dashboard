@@ -116,7 +116,7 @@ function getWeatherCard (weather) {
     cardBody.append(cardTitle, weatherIcon, tempEl, windEl, humidityEl);
 
     col.setAttribute('class', 'col-md');
-    col.classList.add('five-day-card');
+    col.classList.add('five-day-card');dToHistory
     card.setAttribute('class', 'card bg-primary h-100 text-white');
     cardBody.setAttribute('class', 'card-body p-2');
     cardTitle.setAttribute('class', 'card-title');
@@ -161,5 +161,76 @@ function getForecast(dailyForecast) {
             } 
         }
     }
-
 }
+
+function getItems(city, data) {
+    getCurrentWeather(city, data.list[0], data.city.timezone);
+    getForecast(data.list);
+}
+
+// Fetches weather data for given location from weather geolocation
+//endpoint; then, calls functions to cisplay current and forecast weather data.
+function fetchWeather(location) {
+    var { lat } = location;
+    var { lon } = location;
+    var city = location.name;
+  
+    var apiUrl = `${weatherApiRootUrl}/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${weatherApiKey}`;
+  
+    fetch(apiUrl)
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (data) {
+        getItems(city, data);
+      })
+      .catch(function (err) {
+        console.error(err);
+      });
+}
+function fetchCoords(search) {
+    var apiUrl = `${weatherApiRootUrl}/geo/1.0/direct?q=${search}&limit=5&appid=${weatherApiKey}`;
+  
+    fetch(apiUrl)
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (data) {
+        if (!data[0]) {
+          alert('Location not found');
+        } else {
+          appendToHistory(search);
+          fetchWeather(data[0]);
+        }
+      })
+      .catch(function (err) {
+        console.error(err);
+      });
+}
+function correctSearchFormSubmit(e) {
+    // Don't continue if there is nothing in the search form
+    if (!searchInput.value) {
+      return;
+    }
+  
+    e.preventDefault();
+    var search = searchInput.value.trim();
+    fetchCoords(search);
+    searchInput.value = '';
+  }
+  
+  function correctSearchHistoryClick(e) {
+    // Don't do search if current elements is not a search history button
+    if (!e.target.matches('.btn-history')) {
+      return;
+    }
+  
+    var btn = e.target;
+    var search = btn.getAttribute('data-search');
+    fetchCoords(search);
+  }
+  
+  getSearchHistory();
+  searchForm.addEventListener('submit', correctSearchFormSubmit);
+  searchHistoryContainer.addEventListener('click', correctSearchHistoryClick);
+  
