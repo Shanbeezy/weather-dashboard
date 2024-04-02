@@ -7,7 +7,7 @@ var weatherApiKey = '46fcbe623f3b7ed74bbdb72d108e45c1';
 var searchForm = document.querySelector('#search-form');
 var searchInput = document.querySelector('#search-input');
 var todayContainer = document.querySelector('#today');
-var forecastContainer = document.querySelector('#weather');
+var weatherContainer = document.querySelector('#weather');
 var searchHistoryContainer = document.querySelector('#history');
 
 // Add timezone plugins to day.js
@@ -128,7 +128,7 @@ function getWeatherCard (weather) {
     humidityEl.setAttribute('class', 'card-text');
 
   // Add content to elements
-  cardTitle.textContent = dayjs(weather.Date_txt).format('M/D/YYYY');
+  cardTitle.textContent = dayjs(weather.dt_txt).format('M/D/YYYY');
   weatherIcon.setAttribute('src', iconUrl);
   weatherIcon.setAttribute('alt', iconDescription);
   tempEl.textContent = `Temp: ${fTemp} °F`;
@@ -139,7 +139,7 @@ function getWeatherCard (weather) {
 }
 
 // Function to display 5 day forecast
-function getForecast(dailyForecast) {
+function getForecast(dailyWeather) {
     //Create unix timestamps for start and end of 5 day forecast
     var startDate = dayjs().add(1, 'day').startOf('day').unix();
     var endDate = dayjs().add(6, 'day').startOf('day').unix();
@@ -151,17 +151,17 @@ function getForecast(dailyForecast) {
     heading.textContent = '5-Day Forecast: ';
     ColHeading.append(heading);
 
-    forecastContainer.innerHTML = '';
-    forecastContainer.append(ColHeading);
+    weatherContainer.innerHTML = '';
+    weatherContainer.append(ColHeading);
 
-    for(var x = 0; x < dailyForecast.length; x++) {
+    for(var x = 0; x < dailyWeather.length; x++) {
 
         // Starts by filtering through all of the data and returns only data that falls between one day after current data
-        if (dailyForecast[x].Date >= startDate && dailyForecast[x].Date < endDate) {
+        if (dailyWeather[x].dt >= startDate && dailyWeather[x].dt < endDate) {
 
             // Then filters through the data and returns only data captured at noon for each day.
-            if (dailyForecast[x].Date_txt.slice(11, 13) == "12") {
-                getWeatherCard(dailyForecast[x]);
+            if (dailyWeather[x].dt_txt.slice(11, 13) == "12") {
+                getWeatherCard(dailyWeather[x]);
             } 
         }
     }
