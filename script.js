@@ -7,15 +7,19 @@ var weatherApiKey = '46fcbe623f3b7ed74bbdb72d108e45c1';
 var searchForm = document.querySelector('#search-form');
 var searchInput = document.querySelector('#search-input');
 var todayContainer = document.querySelector('#today');
-var forecastContainer = document.querySelector('#weather');;
+var forecastContainer = document.querySelector('#weather');
 var searchHistoryContainer = document.querySelector('#history');
+
+// Add timezone plugins to day.js
+dayjs.extend(window.dayjs_plugin_utc);
+dayjs.extend(window.dayjs_plugin_timezone);
 
 // Search history list display function
 function getSearchHistory() {
     searchHistoryContainer.innerHTML = '';
 
     // Shows most recent search at top of history
-    for (var x = searchHistory.length -1; x >= 0; x++) {
+    for (var x = searchHistory.length -1; x >= 0; x--) {
         var btn = document.createElement('button');
         btn.setAttribute('type', 'button');
         btn.setAttribute('aria-controls', 'today weather');
