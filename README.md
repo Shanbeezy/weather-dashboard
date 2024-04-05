@@ -4,7 +4,7 @@
 Being that developers are often tasked with retrieving data from other applications API and using it in the context of their own, I decided to build a weather dashboard. This allowed me to access their data and functionality by making requests with specific parameters to the open weather map API. I had a lot of fun making this and it's awesome to see how my coding skills are progressing. This weather dashboard features dynamically updated HTML and CSS.
 
 ### Visuals
-![Weather Dashboard Screenshot](<Screenshot 2024-04-05 191438.png>)
+![Weather Dashboard Screenshot](<Screenshot 2024-04-05 194259.png>)
 https://shanbeezy.github.io/weather-dashboard/ 
 
 #### Usage
