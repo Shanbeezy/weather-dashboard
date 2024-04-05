@@ -14,7 +14,7 @@ body {
     font-size: 16px;
     color: white;
 
-    background-image: url(https://images.pexels.com/photos/209831/pexels-photo-209831.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+    background-image: url(https://images.pexels.com/photos/1102915/pexels-photo-1102915.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -353,7 +353,7 @@ label form [type='checkbox'],  label form [type='radio'] {
     /* text-align: inherit; */
     margin: 0.5rem;
     width: 100%;
-    background-color: #5098e6;
+    background-color: darkorange;
     color: #d9e9e8;
 }
   
@@ -379,10 +379,10 @@ label form [type='checkbox'],  label form [type='radio'] {
 }
   
 .weather-header {
-    background: #20084a;
-    background: -webkit-linear-gradient(right, #20084a, #3463bc);
-    background: -moz-linear-gradient(right, #20084a, #3463bc);
-    background: linear-gradient(to left, #20084a, #3463bc);
+    background: darkgoldenrod;
+    background: -webkit-linear-gradient(right, black, darkorange);
+    background: -moz-linear-gradient(right, black, darkorange);
+    background: linear-gradient(to left, black, darkorange);
 }
 
 /* col-sm */
