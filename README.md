@@ -5,7 +5,7 @@ Being that developers are often tasked with retrieving data from other applicati
 
 ### Visuals
 ![Weather Dashboard Screenshot](<Screenshot 2024-04-05 191438.png>)
-
+https://shanbeezy.github.io/weather-dashboard/ 
 
 #### Usage
 This weather dashboard is used for anybody that wants to see the weather outlook for multiple citys, just in case they want to plan a trip accordingly. Once you search for a city, you are instantly presented with current and future conditions for that city and that city is also added to your search history. It also will show you a icon for the weather presented for that day, as well as, the temperature, wind speed, and humidity.
