@@ -156,10 +156,10 @@ function getForecast(dailyWeather) {
 
     for(var x = 0; x < dailyWeather.length; x++) {
 
-        // Starts by filtering through all of the data and returns only data that falls between one day after current data
+       // Starts by filtering through all of the data and returns only data that falls between one day after current data
         if (dailyWeather[x].dt >= startDate && dailyWeather[x].dt < endDate) {
 
-            // Then filters through the data and returns only data captured at noon for each day.
+           // Then filters through the data and returns only data captured at noon for each day.
             if (dailyWeather[x].dt_txt.slice(11, 13) == "12") {
                 getWeatherCard(dailyWeather[x]);
             } 
